@@ -1,0 +1,38 @@
+{
+  "name": "cybercalc",
+  "version": "1.0.0",
+  "description": "A futuristic calculator application with cyberpunk aesthetic, featuring multiple calculation modes, AI-powered natural language processing, and advanced mathematical functions.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/index.html",
+    "build": "echo 'No build process needed - static files only'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "calculator",
+    "cyberpunk",
+    "futuristic",
+    "scientific",
+    "unit-converter",
+    "ai",
+    "math",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "CyberCalc Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cybercalc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/cybercalc/issues"
+  },
+  "homepage": "https://github.com/yourusername/cybercalc#readme"
+}

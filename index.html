@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCalc - Futuristic Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">
+                <i class="fas fa-calculator"></i>
+                CyberCalc
+            </h1>
+            <div class="mode-indicator">
+                <span class="current-mode">Basic</span>
+            </div>
+        </header>
+
+        <!-- Mode Selector -->
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="basic">
+                <i class="fas fa-calculator"></i>
+                Basic
+            </button>
+            <button class="mode-btn" data-mode="scientific">
+                <i class="fas fa-flask"></i>
+                Scientific
+            </button>
+            <button class="mode-btn" data-mode="converter">
+                <i class="fas fa-exchange-alt"></i>
+                Converter
+            </button>
+            <button class="mode-btn" data-mode="ai">
+                <i class="fas fa-robot"></i>
+                AI Query
+            </button>
+        </div>
+
+        <!-- Display Area -->
+        <div class="display-container">
+            <div class="display">
+                <div class="display-history" id="displayHistory"></div>
+                <div class="display-main" id="displayMain">0</div>
+            </div>
+            <div class="display-controls">
+                <button class="control-btn" id="clearBtn">
+                    <i class="fas fa-eraser"></i>
+                    Clear
+                </button>
+                <button class="control-btn" id="backspaceBtn">
+                    <i class="fas fa-backspace"></i>
+                    Del
+                </button>
+                <button class="control-btn" id="historyBtn">
+                    <i class="fas fa-history"></i>
+                    History
+                </button>
+            </div>
+        </div>
+
+        <!-- Basic Calculator -->
+        <div class="calculator basic-mode" id="basicCalculator">
+            <div class="button-grid">
+                <button class="calc-btn function" data-action="clear">C</button>
+                <button class="calc-btn function" data-action="backspace">⌫</button>
+                <button class="calc-btn function" data-action="percentage">%</button>
+                <button class="calc-btn operator" data-action="divide">÷</button>
+                
+                <button class="calc-btn number" data-number="7">7</button>
+                <button class="calc-btn number" data-number="8">8</button>
+                <button class="calc-btn number" data-number="9">9</button>
+                <button class="calc-btn operator" data-action="multiply">×</button>
+                
+                <button class="calc-btn number" data-number="4">4</button>
+                <button class="calc-btn number" data-number="5">5</button>
+                <button class="calc-btn number" data-number="6">6</button>
+                <button class="calc-btn operator" data-action="subtract">-</button>
+                
+                <button class="calc-btn number" data-number="1">1</button>
+                <button class="calc-btn number" data-number="2">2</button>
+                <button class="calc-btn number" data-number="3">3</button>
+                <button class="calc-btn operator" data-action="add">+</button>
+                
+                <button class="calc-btn number" data-number="0" style="grid-column: span 2;">0</button>
+                <button class="calc-btn number" data-number=".">.</button>
+                <button class="calc-btn operator" data-action="equals">=</button>
+            </div>
+        </div>
+
+        <!-- Scientific Calculator -->
+        <div class="calculator scientific-mode hidden" id="scientificCalculator">
+            <div class="scientific-grid">
+                <div class="scientific-row">
+                    <button class="calc-btn function" data-action="clear">C</button>
+                    <button class="calc-btn function" data-action="backspace">⌫</button>
+                    <button class="calc-btn function" data-action="percentage">%</button>
+                    <button class="calc-btn operator" data-action="divide">÷</button>
+                    <button class="calc-btn function" data-action="pi">π</button>
+                    <button class="calc-btn function" data-action="e">e</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn function" data-action="sin">sin</button>
+                    <button class="calc-btn function" data-action="cos">cos</button>
+                    <button class="calc-btn function" data-action="tan">tan</button>
+                    <button class="calc-btn operator" data-action="multiply">×</button>
+                    <button class="calc-btn function" data-action="log">log</button>
+                    <button class="calc-btn function" data-action="ln">ln</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn function" data-action="asin">sin⁻¹</button>
+                    <button class="calc-btn function" data-action="acos">cos⁻¹</button>
+                    <button class="calc-btn function" data-action="atan">tan⁻¹</button>
+                    <button class="calc-btn operator" data-action="subtract">-</button>
+                    <button class="calc-btn function" data-action="sqrt">√</button>
+                    <button class="calc-btn function" data-action="cbrt">∛</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn number" data-number="7">7</button>
+                    <button class="calc-btn number" data-number="8">8</button>
+                    <button class="calc-btn number" data-number="9">9</button>
+                    <button class="calc-btn operator" data-action="add">+</button>
+                    <button class="calc-btn function" data-action="power">x²</button>
+                    <button class="calc-btn function" data-action="power3">x³</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn number" data-number="4">4</button>
+                    <button class="calc-btn number" data-number="5">5</button>
+                    <button class="calc-btn number" data-number="6">6</button>
+                    <button class="calc-btn function" data-action="factorial">x!</button>
+                    <button class="calc-btn function" data-action="exp">eˣ</button>
+                    <button class="calc-btn function" data-action="pow10">10ˣ</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn number" data-number="1">1</button>
+                    <button class="calc-btn number" data-number="2">2</button>
+                    <button class="calc-btn number" data-number="3">3</button>
+                    <button class="calc-btn function" data-action="abs">|x|</button>
+                    <button class="calc-btn function" data-action="floor">⌊x⌋</button>
+                    <button class="calc-btn function" data-action="ceil">⌈x⌉</button>
+                </div>
+                
+                <div class="scientific-row">
+                    <button class="calc-btn number" data-number="0" style="grid-column: span 2;">0</button>
+                    <button class="calc-btn number" data-number=".">.</button>
+                    <button class="calc-btn operator" data-action="equals">=</button>
+                    <button class="calc-btn function" data-action="random">Rand</button>
+                    <button class="calc-btn function" data-action="mod">mod</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unit Converter -->
+        <div class="calculator converter-mode hidden" id="converterCalculator">
+            <div class="converter-container">
+                <div class="converter-section">
+                    <h3>Temperature</h3>
+                    <div class="converter-row">
+                        <input type="number" id="tempInput" placeholder="Enter value">
+                        <select id="tempFrom">
+                            <option value="celsius">Celsius</option>
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="kelvin">Kelvin</option>
+                        </select>
+                        <span>to</span>
+                        <select id="tempTo">
+                            <option value="fahrenheit">Fahrenheit</option>
+                            <option value="celsius">Celsius</option>
+                            <option value="kelvin">Kelvin</option>
+                        </select>
+                        <button class="convert-btn" data-type="temperature">Convert</button>
+                    </div>
+                    <div class="result" id="tempResult"></div>
+                </div>
+
+                <div class="converter-section">
+                    <h3>Length</h3>
+                    <div class="converter-row">
+                        <input type="number" id="lengthInput" placeholder="Enter value">
+                        <select id="lengthFrom">
+                            <option value="meter">Meter</option>
+                            <option value="kilometer">Kilometer</option>
+                            <option value="centimeter">Centimeter</option>
+                            <option value="millimeter">Millimeter</option>
+                            <option value="inch">Inch</option>
+                            <option value="foot">Foot</option>
+                            <option value="yard">Yard</option>
+                            <option value="mile">Mile</option>
+                        </select>
+                        <span>to</span>
+                        <select id="lengthTo">
+                            <option value="foot">Foot</option>
+                            <option value="meter">Meter</option>
+                            <option value="kilometer">Kilometer</option>
+                            <option value="centimeter">Centimeter</option>
+                            <option value="millimeter">Millimeter</option>
+                            <option value="inch">Inch</option>
+                            <option value="yard">Yard</option>
+                            <option value="mile">Mile</option>
+                        </select>
+                        <button class="convert-btn" data-type="length">Convert</button>
+                    </div>
+                    <div class="result" id="lengthResult"></div>
+                </div>
+
+                <div class="converter-section">
+                    <h3>Weight</h3>
+                    <div class="converter-row">
+                        <input type="number" id="weightInput" placeholder="Enter value">
+                        <select id="weightFrom">
+                            <option value="kilogram">Kilogram</option>
+                            <option value="gram">Gram</option>
+                            <option value="pound">Pound</option>
+                            <option value="ounce">Ounce</option>
+                            <option value="ton">Ton</option>
+                        </select>
+                        <span>to</span>
+                        <select id="weightTo">
+                            <option value="pound">Pound</option>
+                            <option value="kilogram">Kilogram</option>
+                            <option value="gram">Gram</option>
+                            <option value="ounce">Ounce</option>
+                            <option value="ton">Ton</option>
+                        </select>
+                        <button class="convert-btn" data-type="weight">Convert</button>
+                    </div>
+                    <div class="result" id="weightResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Query -->
+        <div class="calculator ai-mode hidden" id="aiCalculator">
+            <div class="ai-container">
+                <div class="ai-input-section">
+                    <h3>Ask me anything about math!</h3>
+                    <div class="ai-input-container">
+                        <input type="text" id="aiInput" placeholder="e.g., 'square root of 144' or '20 percent of 500'">
+                        <button class="ai-submit-btn" id="aiSubmit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ai-response" id="aiResponse">
+                    <div class="ai-examples">
+                        <h4>Try these examples:</h4>
+                        <div class="example-chips">
+                            <span class="example-chip">square root of 144</span>
+                            <span class="example-chip">20 percent of 500</span>
+                            <span class="example-chip">what is 15% of 200</span>
+                            <span class="example-chip">convert 25 celsius to fahrenheit</span>
+                            <span class="example-chip">area of circle with radius 5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Panel -->
+        <div class="history-panel hidden" id="historyPanel">
+            <div class="history-header">
+                <h3>Calculation History</h3>
+                <button class="close-history" id="closeHistory">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="history-content" id="historyContent">
+                <div class="no-history">No calculations yet</div>
+            </div>
+            <div class="history-actions">
+                <button class="history-btn" id="clearHistory">Clear History</button>
+                <button class="history-btn" id="exportHistory">Export</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
